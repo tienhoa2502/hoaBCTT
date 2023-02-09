@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HCMUNRE</title>
+</head>
+<body th:fragment="header">
+<div class="main-header">
+    <div class="logo-header">
+        <a href="/" class="logo">
+            HCMUNRE
+        </a>
+        <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+    </div>
+    <nav class="navbar navbar-header navbar-expand-lg">
+        <div class="container-fluid">
+            <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                <li sec:authorize="hasAnyRole('RL01')" class="nav-item dropdown hidden-caret">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="la la-th-list"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/sinhvien/CTDT">Chương trình đào tạo</a> 
+                        <div class="dropdown-divider"></div> 
+                        <a class="dropdown-item" href="/sinhvien/khoa">Học phần</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/sinhvien/Diem">Điểm</a> 
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/sinhvien/LichHoc">Lịch học</a>
+                    </div>
+                </li>
+                <li sec:authorize="hasAnyRole('RL02')" class="nav-item dropdown hidden-caret">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="la la-align-justify"></i>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/QLDiem">Quản lý điểm</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/QLHocPhan/khoa">Quản lý học phần</a>
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="/QLLopHocPhan">Quản lý lớp học phần</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/QL">Chương trình đào tạo</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <span th:text="${@hocPhanController.hoTen(#authentication.getName())}"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                             <div class="user-box">
+                                <div class="u-text">
+                                    <h4 th:text="${@hocPhanController.hoTen(#authentication.getName())}"></h4>
+                                    <p class="text-muted" th:text="${@hocPhanController.getEmailEdu(#authentication.getName())}"></p></div>
+                            </div>
+                        </li>
+                        <a class="dropdown-item" href="/logout"><i class="fa fa-power-off"></i> Logout</a>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

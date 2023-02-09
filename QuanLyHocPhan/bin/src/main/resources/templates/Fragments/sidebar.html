@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../img/logo1.ico" type="image/x-icon">
+    <title>HCMUNRE</title>
+</head>
+<body th:fragment="sidebar">
+<div class="sidebar">
+    <div class="scrollbar-inner sidebar-wrapper">
+        <div class="user">
+            <div class="info">
+                <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+                                    <span th:text="${@hocPhanController.hoTen(#authentication.getName())}"></span>
+									<span class="user-level" th:text="${@hocPhanController.tenRole(#authentication.getName())}"></span>
+									<span class="caret"></span>
+								</span>
+                </a>
+                <div class="clearfix"></div>
+
+                <div sec:authorize="hasAnyRole('RL02')" class="collapse in" id="collapseExample" aria-expanded="true" style="">
+                    <ul class="nav">
+                        <li>
+                            <a href="/QLDiem">
+                                <span class="link-collapse">Quản lý điểm</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/QLHocPhan/khoa">
+                                <span class="link-collapse">Quản lý học phần</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/QLLopHocPhan">
+                                <span class="link-collapse">Quản lý lớp học phần</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/QL">
+                                <span class="link-collapse">Chương trình đào tạo</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="nav" sec:authorize="hasAnyRole('RL01')">
+            <li class="nav-item active">
+                <a href="/sinhvien/CTDT">
+                    <i class="la la-book"></i>
+                    <p>Chương trình đào tạo</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/sinhvien/Diem">
+                    <i class="la la-adn"></i>
+                    <p>Điểm</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/sinhvien/khoa">
+                    <i class="la la-windows"></i>
+                    <p>Học phần</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/sinhvien/LichHoc">
+                    <i class="la la-calendar"></i>
+                    <p>Lịch học</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/sinhvien/DangkyHP">
+                    <i class="la la-calendar"></i>
+                    <p>Đăng ký lớp học</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
